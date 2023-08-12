@@ -27,7 +27,9 @@ def open_settings():
     global resolution_var
     global language_menu
     global resolution_menu
-
+    global BooleanVar
+    global checkbox_var
+    
     # Prüfen, ob das Einstellungsfenster schon existiert
     if settings_window is None or not settings_window.winfo_exists():
         check_settings()
@@ -48,6 +50,11 @@ def open_settings():
         resolution_var.set(resolution)
         resolution_menu = tk.OptionMenu(settings_window, resolution_var, "800x600", "1024x768", "1280x720", "1920x1080")
         resolution_menu.pack()
+        checkbox_label = tk.Label(settings_window, text="Enable Feature:")
+        checkbox_label.pack(pady=10)
+        checkbox_var = BooleanVar(value=checkbox_var)  # Create a BooleanVar and set its value
+        checkbox = tk.Checkbutton(settings_window, variable=checkbox_var)
+        checkbox.pack()
         # Button zum Speichern der Einstellungen erstellen
         save_button = tk.Button(settings_window, text="Safe", command=lambda: save_settings(language_var.get(), resolution_var.get()))
     save_button.pack(pady=10)
