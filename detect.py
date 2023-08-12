@@ -22,12 +22,13 @@ def get_lol_window_coordinates(window_title):
 def einstellungen():
     global report_bild
     global report2_bild
+    global only_enemy
     
     # Open the file
     with open("settings.json") as f:
     # Load the data
         data = json.load(f)
-        only_enemy = data['only_enemy']
+        only_enemy = data.get("only_team", False)
     if data['language'] == "Englisch":
         report_bild = "E20.png"
         report2_bild =  "E40.png"
@@ -45,7 +46,6 @@ def einstellungen():
     
 def find_image(left, top, width, height, image_path):
     location = pyautogui.locateOnScreen(image_path, region=(left, top, width, height), confidence=0.9)
-    print(location)
     return location
 def click_on_coordinates(Location):
     pyautogui.click(Loaction)
@@ -114,13 +114,11 @@ def write_whitelist(i):
             blacklist.append(loc.top + loc.height //2)
     if blacklist == None:
         blacklist.append(0)
-    print(blacklist)
         
 
         
 
 if __name__ == "__main__":
-    only_enemy = False
     einstellungen()
     save_path = "lol_screenshot.png"    
     image_path = '10.png'
@@ -130,7 +128,6 @@ if __name__ == "__main__":
     
 
     left, top, width, height = get_lol_window_coordinates('League of Legends')
-    
     if left is not None and top is not None and width is not None and height is not None:
         print(f"League of Legends window coordinates: Left = {left}, Top = {top}, Width = {width}, Height = {height}")
         i = 1
@@ -140,11 +137,13 @@ if __name__ == "__main__":
         Loaction = find_image(left, top, width, height, image_path)
             
         if Loaction != None:
+            print(blacklist)
             i = 0
             count = 0
             y = click_on_coordinates(Loaction)
             while i < 11: 
-                if(only_enemy == True):
+                if(only_enemy):
+                    
                     if(i < 5): 
                         skip()
                 tracker = 0
@@ -152,4 +151,8 @@ if __name__ == "__main__":
                 click_reprot(y, count, Loaction)
                 i += 1
                 time.sleep(2)
+        else:
+            print("no scoreboard screen found")
+
+
 
