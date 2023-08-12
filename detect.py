@@ -20,10 +20,14 @@ def get_lol_window_coordinates(window_title):
         return None, None, None, None
     
 def einstellungen():
+    global report_bild
+    global report2_bild
+    
     # Open the file
     with open("settings.json") as f:
     # Load the data
         data = json.load(f)
+        only_enemy = data['only_enemy']
     if data['language'] == "Englisch":
         report_bild = "E20.png"
         report2_bild =  "E40.png"
@@ -66,8 +70,6 @@ def click_reprot(y, count, Location):
         print(f"Clicked on coordinates: ({center_x}, {center_y})")
     
 def menu_reprot():
-    global report_bild
-    global report2_bild
     loc1 = find_image(left, top, width, height, report_bild
 )
     if(loc1 == None):
@@ -118,6 +120,7 @@ def write_whitelist(i):
         
 
 if __name__ == "__main__":
+    only_enemy = False
     einstellungen()
     save_path = "lol_screenshot.png"    
     image_path = '10.png'
@@ -140,7 +143,10 @@ if __name__ == "__main__":
             i = 0
             count = 0
             y = click_on_coordinates(Loaction)
-            while i < 11:  
+            while i < 11: 
+                if(only_enemy == True):
+                    if(i < 5): 
+                        skip()
                 tracker = 0
                 count += 40
                 click_reprot(y, count, Loaction)
