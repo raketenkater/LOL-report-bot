@@ -34,6 +34,7 @@ def open_settings():
     global resolution_menu
     global save_checkbox
     global save_var
+    only_team = False
     
     # Prüfen, ob das Einstellungsfenster schon existiert
     if settings_window is None or not settings_window.winfo_exists():
