@@ -25,6 +25,7 @@ def check_settings():
     except:
         language = "Deutsch"
         resolution = "800x600"
+        only_team = False
 # Funktion zum Öffnen der Einstellungen
 def open_settings():
     global settings_window
@@ -34,7 +35,7 @@ def open_settings():
     global resolution_menu
     global save_checkbox
     global save_var
-    only_team = False
+    
     
     # Prüfen, ob das Einstellungsfenster schon existiert
     if settings_window is None or not settings_window.winfo_exists():
