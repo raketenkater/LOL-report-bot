@@ -78,7 +78,7 @@ def menu_reprot():
         pyautogui.click(loc1)
         time.sleep(1)
         i= 0
-        while i < 3: 
+        while i < 4: 
             loc2 = find_image(left, top, width, height, "30.png")
             pyautogui.click(loc2)
             time.sleep(1)
