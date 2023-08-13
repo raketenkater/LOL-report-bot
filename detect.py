@@ -85,7 +85,7 @@ def menu_reprot():
             i+=1
         loc3 = find_image(left, top, width, height, report2_bild)
         pyautogui.click(loc3)
-        time.sleep(3)
+        time.sleep(1)
         print("reprotet")
 
 def skip():
