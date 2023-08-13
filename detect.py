@@ -143,14 +143,19 @@ if __name__ == "__main__":
             y = click_on_coordinates(Loaction)
             while i < 11: 
                 if(only_enemy):
-                    
+                    print(only_enemy)
                     if(i < 5): 
                         skip()
-                tracker = 0
-                count += 40
-                click_reprot(y, count, Loaction)
-                i += 1
-                time.sleep(2)
+                        i += 1
+                        count +=40
+                    elif i == 5:
+                        only_enemy = False
+                else:
+                    tracker = 0
+                    count += 40
+                    click_reprot(y, count, Loaction)
+                    i += 1
+                    time.sleep(2)
         else:
             print("no scoreboard screen found")
 
