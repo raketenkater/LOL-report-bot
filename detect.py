@@ -54,18 +54,19 @@ def find_image(left, top, width, height, image_path):
 def click_reprot(y, count, Location):
     center_x = Location.left + Location.width // 2
     center_y = y + count
-
-    print(f"Clicked on coordinates: ({center_x}, {center_y})")
+    pyautogui.click(center_x,center_y)
+    time.sleep(0.5)
+    pyautogui.click(center_x,center_y)
     check = False
     check = check_whitelist(center_y)
-    if check == True:
+    if check:
         print(str(check)+"skipped")
         skip()
     else:
-        menu_reprot()
         pyautogui.click(center_x, center_y)
         time.sleep(0.5)
         pyautogui.click(center_x, center_y)
+        menu_reprot()
         print(f"Clicked on coordinates: ({center_x}, {center_y})")
     
 def menu_reprot():
@@ -155,22 +156,20 @@ if __name__ == "__main__":
             i = 0
             count = 0
             y = Location.top + Location.height //2
+            print(y)
             while i < 11: 
+                print(i)
+                i += 1
                 if(only_enemy):
-                    print("reprot_enemy")
-                    if(i < 5): 
-                        skip()
-                        i += 1
-                        
-                    elif i == 5:
+                    if i == 5:
                         if(only_enemy):
+                            print("reprot_enemy")
                             count +=200
                             only_enemy = False
                 else:
                     print("nomral")
                     click_reprot(y, count, Location)
                     count += 40
-                    i += 1
                     time.sleep(2)
         else:
             print("no scoreboard screen found")
