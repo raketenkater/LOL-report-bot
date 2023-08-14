@@ -3,3 +3,6 @@
 mates/
 settings.json
 __pycache__/
+build/
+dist/
+gui.spec
