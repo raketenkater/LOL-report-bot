@@ -35,7 +35,7 @@ def einstellungen():
         print("Englisch")
     else:
         report_bild = "20.png"
-        report2_bild = "50.png" #TODO: es wird noch nicht reportet muss auf 40.png geändert werden
+        report2_bild = "40.png" #TODO: es wird noch nicht reportet muss auf 40.png geändert werden
     if data['resolution'] == "800x600":
         print("800x600")
 
@@ -70,6 +70,7 @@ def click_reprot(y, count, Location):
         print(f"Clicked on coordinates: ({center_x}, {center_y})")
     
 def menu_reprot():
+    check_whitelist()
     loc1 = find_image(left, top, width, height, report_bild
 )
     if(loc1 == None):
@@ -147,8 +148,9 @@ if __name__ == "__main__":
                     if(i < 5): 
                         skip()
                         i += 1
-                        count +=40
+                        
                     elif i == 5:
+                        count +=200
                         only_enemy = False
                 else:
                     tracker = 0
