@@ -1,0 +1,5 @@
+tkinter
+json
+pyautogui
+opencv-python
+pygetwindow
