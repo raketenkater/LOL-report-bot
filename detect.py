@@ -53,7 +53,6 @@ def click_on_coordinates(Location):
     
     
 def click_reprot(y, count, Location):
-    global center_y
     center_x = Location.left + Location.width // 2
     center_y = y + count
 
@@ -61,6 +60,7 @@ def click_reprot(y, count, Location):
     print(f"Clicked on coordinates: ({center_x}, {center_y})")
     check = check_whitelist(center_y)
     if check == True:
+        print(str(check)+"skipped")
         skip()
     else:
         menu_reprot()
@@ -70,7 +70,6 @@ def click_reprot(y, count, Location):
         print(f"Clicked on coordinates: ({center_x}, {center_y})")
     
 def menu_reprot():
-    check_whitelist(center_y)
     loc1 = find_image(left, top, width, height, report_bild
 )
     if(loc1 == None):
@@ -97,13 +96,13 @@ def check_whitelist(current_player):
     y = blacklist
     
     for item in y:
-        if item - 5 <= x <= item + 5:
-            tracker = 1
-        else:
-            tracker = 0
-        if tracker != 0:
+        if item - 3 <= x <= item + 3:
+            
             print(str(x) +"!!"+ str(item))
             return True
+        else:
+            return False
+
     #check if the height is in a +5 -5 range when true skip
     
 
@@ -123,7 +122,6 @@ if __name__ == "__main__":
     einstellungen()
     save_path = "lol_screenshot.png"    
     image_path = '10.png'
-    tracker = 0 
     y = 0
     blacklist= []
     
@@ -144,7 +142,7 @@ if __name__ == "__main__":
             y = click_on_coordinates(Loaction)
             while i < 11: 
                 if(only_enemy):
-                    print(only_enemy)
+                    print("reprot_enemy")
                     if(i < 5): 
                         skip()
                         i += 1
@@ -153,7 +151,6 @@ if __name__ == "__main__":
                         count +=200
                         only_enemy = False
                 else:
-                    tracker = 0
                     count += 40
                     click_reprot(y, count, Loaction)
                     i += 1
