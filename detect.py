@@ -53,7 +53,7 @@ def click_on_coordinates(Location):
     
     
 def click_reprot(y, count, Location):
-    
+    global center_y
     center_x = Location.left + Location.width // 2
     center_y = y + count
 
@@ -70,7 +70,7 @@ def click_reprot(y, count, Location):
         print(f"Clicked on coordinates: ({center_x}, {center_y})")
     
 def menu_reprot():
-    check_whitelist()
+    check_whitelist(center_y)
     loc1 = find_image(left, top, width, height, report_bild
 )
     if(loc1 == None):

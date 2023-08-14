@@ -55,7 +55,7 @@ def open_settings():
         resolution_label.pack(pady=10)
         resolution_var = tk.StringVar(settings_window)
         resolution_var.set(resolution)
-        resolution_menu = tk.OptionMenu(settings_window, resolution_var, "800x600", "1024x768", "1280x720", "1920x1080")
+        resolution_menu = tk.OptionMenu(settings_window, resolution_var,  "1280x720", "1600x900")
         resolution_menu.pack()
         save_var = tk.BooleanVar(settings_window)
         save_var.set(only_team)  # Set a default value
