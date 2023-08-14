@@ -4,6 +4,8 @@ from tkinter import *
 import json
 import detect
 import subprocess
+import pygetwindow as gw
+import pyautogui
 
 # Replace 'other_script.py' with the name of the .py file you want to start
 script_path = 'detect.py'
