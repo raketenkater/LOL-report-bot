@@ -23,6 +23,7 @@ def einstellungen():
     global report_bild
     global report2_bild
     global only_enemy
+    global skip_bild
     
     # Open the file
     with open("settings.json") as f:
@@ -47,17 +48,15 @@ def einstellungen():
 def find_image(left, top, width, height, image_path):
     location = pyautogui.locateOnScreen(image_path, region=(left, top, width, height), confidence=0.9)
     return location
-def click_on_coordinates(Location):
-    pyautogui.click(Loaction)
-    return  Location.top + Location.height //2
+
     
     
 def click_reprot(y, count, Location):
     center_x = Location.left + Location.width // 2
     center_y = y + count
 
-    
     print(f"Clicked on coordinates: ({center_x}, {center_y})")
+    check = False
     check = check_whitelist(center_y)
     if check == True:
         print(str(check)+"skipped")
@@ -73,6 +72,7 @@ def menu_reprot():
     loc1 = find_image(left, top, width, height, report_bild
 )
     if(loc1 == None):
+        print("loc1==NONE")
         skip()
     else:
         pyautogui.click(loc1)
@@ -88,19 +88,34 @@ def menu_reprot():
         time.sleep(1)
         print("reprotet")
 
+
 def skip():
     print("skip")
-
+def check_2():
+    filelist = os.listdir("mates")
+    counter = 0 
+    for item in filelist:
+        if find_image(left, top, width, height, './mates/'+str(item)) != None:
+            print("check"+str(True))
+            counter += 1
+        else:
+            counter += 0
+    if counter != 0:
+        return True
+    else:
+        return False
+        
 def check_whitelist(current_player):
     x= current_player
     y = blacklist
     
     for item in y:
-        if item - 3 <= x <= item + 3:
+        if item - 8 <= x <= item + 8:
             
             print(str(x) +"!!"+ str(item))
             return True
         else:
+            print("check"+str(False))
             return False
 
     #check if the height is in a +5 -5 range when true skip
@@ -133,13 +148,13 @@ if __name__ == "__main__":
         while i < 5:
             write_whitelist(i)
             i += 1
-        Loaction = find_image(left, top, width, height, image_path)
+        Location = find_image(left, top, width, height, image_path)
             
-        if Loaction != None:
+        if Location != None:
             print(blacklist)
             i = 0
             count = 0
-            y = click_on_coordinates(Loaction)
+            y = Location.top + Location.height //2
             while i < 11: 
                 if(only_enemy):
                     print("reprot_enemy")
@@ -148,11 +163,13 @@ if __name__ == "__main__":
                         i += 1
                         
                     elif i == 5:
-                        count +=200
-                        only_enemy = False
+                        if(only_enemy):
+                            count +=200
+                            only_enemy = False
                 else:
+                    print("nomral")
+                    click_reprot(y, count, Location)
                     count += 40
-                    click_reprot(y, count, Loaction)
                     i += 1
                     time.sleep(2)
         else:
