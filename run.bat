@@ -8,7 +8,7 @@ if %errorlevel% equ 0 (
     echo Python is already installed.
 ) else (
     rem Install Python using the installer file
-    python.exe /quiet InstallAllUsers=1 PrependPath=1
+    python3.9.exe /quiet InstallAllUsers=1 PrependPath=1
 )
 
 rem Install the required packages using the requirements file
