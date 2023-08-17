@@ -54,9 +54,6 @@ def find_image(left, top, width, height, image_path):
 def click_reprot(y, count, Location):
     center_x = Location.left + Location.width // 2
     center_y = y + count
-    pyautogui.click(center_x,center_y)
-    time.sleep(0.5)
-    pyautogui.click(center_x,center_y)
     check = False
     check = check_whitelist(center_y)
     if check:
@@ -111,7 +108,7 @@ def check_whitelist(current_player):
     y = blacklist
     
     for item in y:
-        if item - 8 <= x <= item + 8:
+        if item - 15 <= x <= item + 15:
             
             print(str(x) +"!!"+ str(item))
             return True
@@ -150,7 +147,10 @@ if __name__ == "__main__":
             write_whitelist(i)
             i += 1
         Location = find_image(left, top, width, height, image_path)
-            
+        pyautogui.click(Location)
+        time.sleep(0.5)
+        pyautogui.click(Location)
+
         if Location != None:
             print(blacklist)
             i = 0
@@ -167,7 +167,7 @@ if __name__ == "__main__":
                             count +=200
                             only_enemy = False
                 else:
-                    print("nomral")
+                    print("normal")
                     click_reprot(y, count, Location)
                     count += 40
                     time.sleep(2)
