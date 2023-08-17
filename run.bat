@@ -8,11 +8,13 @@ if %errorlevel% equ 0 (
     echo Python is already installed.
 ) else (
     rem Install Python using the installer file
-    python-3.9.7-amd64.exe /quiet InstallAllUsers=1 PrependPath=1
+    python.exe /quiet InstallAllUsers=1 PrependPath=1
 )
 
 rem Install the required packages using the requirements file
 pip install -r requirements.txt
+
+if not exist mates mkdir mates
 
 rem Run the Python file
 python gui.py
