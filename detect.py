@@ -74,7 +74,6 @@ def menu_reprot():
         skip()
     else:
         pyautogui.click(loc1)
-        time.sleep(1)
         i= 0
         while i < 4: 
             loc2 = find_image(left, top, width, height, "30.png")
@@ -170,7 +169,7 @@ if __name__ == "__main__":
                     print("normal")
                     click_reprot(y, count, Location)
                     count += 40
-                    time.sleep(2)
+                    time.sleep(1)
         else:
             print("no scoreboard screen found")
 
