@@ -102,7 +102,7 @@ welcome_label = tk.Label(window, text=f"Welcome Language is {language} resolutio
 welcome_label.pack(pady=20)
 
 # Ein Button mit einer Aktion erstellen
-action_button = tk.Button(window, text="Power of GOD", command=lambda: subprocess.run(['python', script_path]))
+action_button = tk.Button(window, text="Funny button", command=lambda: subprocess.run(['python', script_path]))
 action_button.pack()
 
 # Ein Button mit einem Einstellungs-Icon erstellen
