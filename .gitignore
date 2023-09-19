@@ -1,6 +1,5 @@
 *.json
 
-mates/
 settings.json
 __pycache__/
 build/
