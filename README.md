@@ -1,7 +1,7 @@
 # LOL-report-bot
 
 
-This is a Bot that Automates reporting in LOL to run this run the run.bat
+This is a Bot that Automates reporting in LOL
 
 Currently, only working on client resolution 1280X720 
 
